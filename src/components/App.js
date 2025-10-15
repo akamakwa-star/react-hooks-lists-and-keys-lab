@@ -1,19 +1,23 @@
+// src/components/ProjectList.js
 import React from "react";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import About from "./About";
-import ProjectList from "./ProjectList";
-import user from "../data/user";
+import ProjectItem from "./ProjectItem";
 
-function App() {
+function ProjectList({ projects }) {
   return (
-    <div>
-      <NavBar />
-      <Home username={user.name} city={user.city} color={user.color} />
-      <About bio={user.bio} links={user.links} />
-      <ProjectList projects={user.projects} />
+    <div id="projects">
+      <h2>My Projects</h2>
+      <div id="project-list">
+        {projects.map((project) => (
+          <ProjectItem
+            key={project.id}
+            name={project.name}
+            about={project.about}
+            technologies={project.technologies}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
-export default App;
+export default ProjectList;
